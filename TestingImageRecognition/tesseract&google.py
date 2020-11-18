@@ -24,7 +24,7 @@ from googletrans import Translator
 pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/4.1.1/bin/tesseract'
 
 # for reading the text itself
-text = pytesseract.image_to_string(Image.open('img/image6.jpeg'), lang='eng', timeout=5)
+text = pytesseract.image_to_string(Image.open('img/input/image4.jpeg'), lang='eng', timeout=5)
 
 print(text)
 

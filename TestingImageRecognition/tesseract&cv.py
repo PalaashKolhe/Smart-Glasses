@@ -11,8 +11,20 @@ import pytesseract
 pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/4.1.1/bin/tesseract'
 
 # settings regarding the image
-img = cv2.imread('img/image4.jpeg')
-# img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+filename = 'img/image6_athres'
+img = cv2.imread(filename+'.jpeg')
+
+# COLORIZING THE CODE *******************************************************************
+# # Using Otsu's Method to grayscale the image and threshold function
+# img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# retval, img_gray_otsu = cv2.threshold(img_gray, 100, 192, cv2.THRESH_OTSU)
+# # threshold = 128, maxval = 192
+# # if greater than threshold, then become maxval, else become 0
+#
+# filename = filename+'_colorized'
+# cv2.imwrite(filename+'.jpeg', img_gray_otsu)
+# img = cv2.imread(filename+'.jpeg')
+# END OF COLORING THE CODE ****************************************************************
 
 # printing out the text found within the image
 text = pytesseract.image_to_string(img)
