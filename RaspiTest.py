@@ -40,13 +40,13 @@ disp.display()
 # Make sure to create image with mode '1' for 1-bit color.
 width = disp.width
 height = disp.height
-image = Image.new('1', (height, width))
+image = Image.new('1', (width, height))
 
 # Get drawing object to draw on image.
 draw = ImageDraw.Draw(image)
 
 # Draw a black filled box to clear the image.
-draw.rectangle((0,0,height,width), outline=0, fill=0)
+draw.rectangle((0,0,width, height), outline=0, fill=0)
 
 # Draw some shapes.
 # First define some constants to allow easy resizing of shapes.
@@ -93,7 +93,7 @@ while True:
 
     # draw.text((x, top),       "My name is Palaash ",  font=font, fill=255)
     draw.text((x, top), formatted_data.title(), font=font, fill=255)
-    draw.text((x, top+8), str(current_temp) + 'C', ont=font, fill=255)
+    draw.text((x, top+8), str(current_temp) + 'C', font=font, fill=255)
     # draw.text((x, top+8),     str(CPU), font=font, fill=255)
     # draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
     # draw.text((x, top+25),    str(Disk),  font=font, fill=255)
