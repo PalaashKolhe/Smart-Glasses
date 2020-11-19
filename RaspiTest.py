@@ -3,6 +3,7 @@ import dropbox
 from picamera import PiCamera
 from time import sleep
 import time
+import requests
 
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
@@ -39,13 +40,13 @@ disp.display()
 # Make sure to create image with mode '1' for 1-bit color.
 width = disp.width
 height = disp.height
-image = Image.new('1', (width, height))
+image = Image.new('1', (height, width))
 
 # Get drawing object to draw on image.
 draw = ImageDraw.Draw(image)
 
 # Draw a black filled box to clear the image.
-draw.rectangle((0,0,width,height), outline=0, fill=0)
+draw.rectangle((0,0,height,width), outline=0, fill=0)
 
 # Draw some shapes.
 # First define some constants to allow easy resizing of shapes.
@@ -65,7 +66,7 @@ current_temp = round(json_data['main']['temp']-273.15)
 
 print(url)
 print(formatted_data)
-print(str(current_temp)+'°C' )
+print(str(current_temp)+'C' )
 
 # Load default font.
 font = ImageFont.load_default()
@@ -90,9 +91,9 @@ while True:
 
     # Write two lines of text.
 
-    draw.text((x, top),       "My name is Palaash ",  font=font, fill=255)
-    draw.text((x, top+8), formatted_data, font=font, fill=255)
-    draw.text((x, top+16), current_temp + '°C', ont=font, fill=255)
+    # draw.text((x, top),       "My name is Palaash ",  font=font, fill=255)
+    draw.text((x, top), formatted_data.title(), font=font, fill=255)
+    draw.text((x, top+8), str(current_temp) + 'C', ont=font, fill=255)
     # draw.text((x, top+8),     str(CPU), font=font, fill=255)
     # draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
     # draw.text((x, top+25),    str(Disk),  font=font, fill=255)
