@@ -39,6 +39,10 @@ computer_path="/home/pi/ProjectImages/image.jpg"
 client = dropbox.Dropbox(dropbox_access_token)
 print("[SUCCESS] dropbox account linked")
 
+# Clear dropbox folder contents
+client.files_delete('/image.jpg')
+print("[CLEAR] dropbox files deleted")
+
 # Upload image to dropbox folder
 client.files_upload(open(computer_path, "rb").read(), dropbox_path)
 print("[UPLOADED] {}".format(computer_path))
@@ -51,6 +55,4 @@ out.write(f.content)
 out.close()
 '''
 
-# Clear dropbox folder contents
-client.files_delete('/image.jpg')
-print("[CLEAR] dropbox files deleted")
+
