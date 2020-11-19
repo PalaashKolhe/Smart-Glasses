@@ -55,6 +55,17 @@ bottom = height-padding
 # Move left to right keeping track of the current x position for drawing shapes.
 x = 0
 
+############## Weather
+api_address='http://api.openweathermap.org/data/2.5/weather?appid=0c42f7f6b53b244c78a418f4f181282a&q='
+city = 'Waterloo'
+url = api_address + city
+json_data = requests.get(url).json()
+formatted_data = json_data['weather'][0]['description']
+current_temp = round(json_data['main']['temp']-273.15)
+
+print(url)
+print(formatted_data)
+print(str(current_temp)+'°C' )
 
 # Load default font.
 font = ImageFont.load_default()
@@ -80,6 +91,8 @@ while True:
     # Write two lines of text.
 
     draw.text((x, top),       "My name is Palaash ",  font=font, fill=255)
+    draw.text((x, top), formatted_data, font=font, fill=255)
+    draw.text((x, top), current_temp + '°C', ont=font, fill=255)
     # draw.text((x, top+8),     str(CPU), font=font, fill=255)
     # draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
     # draw.text((x, top+25),    str(Disk),  font=font, fill=255)
@@ -89,19 +102,7 @@ while True:
     disp.display()
     time.sleep(.1)
 
-############## Weather
-api_address='http://api.openweathermap.org/data/2.5/weather?appid=0c42f7f6b53b244c78a418f4f181282a&q='
-city = 'Waterloo'
-url = api_address + city
-json_data = requests.get(url).json()
-formatted_data = json_data['weather'][0]['description']
-current_temp = round(json_data['main']['temp']-273.15)
 
-print(url)
-draw.text(formatted_data)
-print(formatted_data)
-draw.text(current_temp + '°C')
-print(str(current_temp)+'°C' )
 
 ############### Take Image with Camera
 camera = PiCamera()
