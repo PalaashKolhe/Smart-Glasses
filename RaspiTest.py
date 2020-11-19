@@ -10,6 +10,8 @@ from luma.core.interface.serial import i2c
 from luma.core.render import canvas
 from luma.oled.device import ssd1306, ssd1325, ssd1331, sh1106
 
+serial = i2c(port=1, address=0x3C)
+
 device = ssd1306(serial, rotate=1)
 
 ############## Weather
@@ -25,15 +27,15 @@ print(formatted_data)
 print(str(current_temp)+'C' )
 
 # Load default font.
-font = ImageFont.load_default()
+# font = ImageFont.load_default()
 
 while True:
 
     with canvas(device) as draw:
         # draw.text((x, top),       "My name is Palaash ",  font=font, fill=255)
-        draw.text((0, 0), formatted_data.title(), font=font, fill=255)
-        draw.text((11, 0), str(current_temp) + 'C', font=font, fill=255)
-        draw.text((0, 9), "___________", fill = "white")
+        draw.text((0, 0), formatted_data.title(), fill=255)
+        draw.text((0, 10), str(current_temp) + 'C', fill=255)
+        draw.text((0, 20), "___________", fill = "white")
 
 
 ############### Take Image with Camera
