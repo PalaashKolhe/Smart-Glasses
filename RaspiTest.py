@@ -91,8 +91,8 @@ while True:
     # Write two lines of text.
 
     draw.text((x, top),       "My name is Palaash ",  font=font, fill=255)
-    draw.text((x, top), formatted_data, font=font, fill=255)
-    draw.text((x, top), current_temp + '°C', ont=font, fill=255)
+    draw.text((x, top+8), formatted_data, font=font, fill=255)
+    draw.text((x, top+16), current_temp + '°C', ont=font, fill=255)
     # draw.text((x, top+8),     str(CPU), font=font, fill=255)
     # draw.text((x, top+16),    str(MemUsage),  font=font, fill=255)
     # draw.text((x, top+25),    str(Disk),  font=font, fill=255)
