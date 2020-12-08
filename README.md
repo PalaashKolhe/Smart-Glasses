@@ -7,4 +7,4 @@ stylish and unique.
 This revolutionizes the way technology works and makes day to day tasks even
 easier and simpler
 
-This are the Shady assistants
+These are the Shady assistants
